@@ -63,6 +63,20 @@ func (m *Plugin) generateSingleFile(data *codegen.Data) error {
 		}
 	}
 
+	for _, o := range data.Inputs {
+		if o.HasResolvers() {
+			file.Inputs = append(file.Inputs, o)
+		}
+		for _, f := range o.Fields {
+			if !f.IsResolver {
+				continue
+			}
+
+			resolver := Resolver{o, f, `panic("not implemented")`}
+			file.Resolvers = append(file.Resolvers, &resolver)
+		}
+	}
+
 	resolverBuild := &ResolverBuild{
 		File:         &file,
 		PackageName:  data.Config.Resolver.Package,
@@ -97,6 +111,38 @@ func (m *Plugin) generatePerSchema(data *codegen.Data) error {
 			rewriter.MarkStructCopied(templates.LcFirst(o.Name) + templates.UcFirst(data.Config.Resolver.Type))
 			rewriter.GetMethodBody(data.Config.Resolver.Type, strings.Title(o.Name))
 			files[fn].Objects = append(files[fn].Objects, o)
+		}
+		for _, f := range o.Fields {
+			if !f.IsResolver {
+				continue
+			}
+
+			structName := templates.LcFirst(o.Name) + templates.UcFirst(data.Config.Resolver.Type)
+			implementation := strings.TrimSpace(rewriter.GetMethodBody(structName, f.GoFieldName))
+			if implementation == "" {
+				implementation = `panic(fmt.Errorf("not implemented"))`
+			}
+
+			resolver := Resolver{o, f, implementation}
+			fn := gqlToResolverName(data.Config.Resolver.Dir(), f.Position.Src.Name, data.Config.Resolver.FilenameTemplate)
+			if files[fn] == nil {
+				files[fn] = &File{}
+			}
+
+			files[fn].Resolvers = append(files[fn].Resolvers, &resolver)
+		}
+	}
+
+	for _, o := range data.Inputs {
+		if o.HasResolvers() {
+			fn := gqlToResolverName(data.Config.Resolver.Dir(), o.Position.Src.Name, data.Config.Resolver.FilenameTemplate)
+			if files[fn] == nil {
+				files[fn] = &File{}
+			}
+
+			rewriter.MarkStructCopied(templates.LcFirst(o.Name) + templates.UcFirst(data.Config.Resolver.Type))
+			rewriter.GetMethodBody(data.Config.Resolver.Type, strings.Title(o.Name))
+			files[fn].Inputs = append(files[fn].Inputs, o)
 		}
 		for _, f := range o.Fields {
 			if !f.IsResolver {
@@ -175,6 +221,7 @@ type File struct {
 	// These are separated because the type definition of the resolver object may live in a different file from the
 	// resolver method implementations, for example when extending a type in a different graphql schema file
 	Objects         []*codegen.Object
+	Inputs          []*codegen.Object
 	Resolvers       []*Resolver
 	imports         []rewrite.Import
 	RemainingSource string
