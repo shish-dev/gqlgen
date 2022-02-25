@@ -8,8 +8,8 @@ import (
 
 	"golang.org/x/tools/go/packages"
 
-	"github.com/99designs/gqlgen/codegen/templates"
-	"github.com/99designs/gqlgen/internal/code"
+	"github.com/shish-dev/gqlgen/codegen/templates"
+	"github.com/shish-dev/gqlgen/internal/code"
 	"github.com/vektah/gqlparser/v2/ast"
 )
 

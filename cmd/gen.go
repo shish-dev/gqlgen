@@ -4,8 +4,8 @@ import (
 	"errors"
 	"io/fs"
 
-	"github.com/99designs/gqlgen/api"
-	"github.com/99designs/gqlgen/codegen/config"
+	"github.com/shish-dev/gqlgen/api"
+	"github.com/shish-dev/gqlgen/codegen/config"
 	"github.com/urfave/cli/v2"
 )
 

@@ -10,8 +10,8 @@ import (
 
 	"github.com/vektah/gqlparser/v2/ast"
 
-	"github.com/99designs/gqlgen/codegen/config"
-	"github.com/99designs/gqlgen/codegen/templates"
+	"github.com/shish-dev/gqlgen/codegen/config"
+	"github.com/shish-dev/gqlgen/codegen/templates"
 )
 
 func GenerateCode(data *Data) error {

@@ -7,11 +7,11 @@ import (
 
 	"github.com/vektah/gqlparser/v2/ast"
 
-	"github.com/99designs/gqlgen/codegen"
-	"github.com/99designs/gqlgen/codegen/config"
-	"github.com/99designs/gqlgen/codegen/templates"
-	"github.com/99designs/gqlgen/plugin"
-	"github.com/99designs/gqlgen/plugin/federation/fieldset"
+	"github.com/shish-dev/gqlgen/codegen"
+	"github.com/shish-dev/gqlgen/codegen/config"
+	"github.com/shish-dev/gqlgen/codegen/templates"
+	"github.com/shish-dev/gqlgen/plugin"
+	"github.com/shish-dev/gqlgen/plugin/federation/fieldset"
 )
 
 type federation struct {

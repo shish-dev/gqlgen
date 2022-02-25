@@ -10,10 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/99designs/gqlgen/api"
-	"github.com/99designs/gqlgen/codegen/config"
-	"github.com/99designs/gqlgen/internal/code"
-	"github.com/99designs/gqlgen/plugin/servergen"
+	"github.com/shish-dev/gqlgen/api"
+	"github.com/shish-dev/gqlgen/codegen/config"
+	"github.com/shish-dev/gqlgen/internal/code"
+	"github.com/shish-dev/gqlgen/plugin/servergen"
 	"github.com/urfave/cli/v2"
 )
 

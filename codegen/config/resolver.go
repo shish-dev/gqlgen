@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/99designs/gqlgen/internal/code"
+	"github.com/shish-dev/gqlgen/internal/code"
 )
 
 type ResolverConfig struct {

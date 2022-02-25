@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/99designs/gqlgen/graphql/executor"
-	"github.com/99designs/gqlgen/graphql/handler/extension"
-	"github.com/99designs/gqlgen/graphql/handler/lru"
-	"github.com/99designs/gqlgen/graphql/handler/transport"
+	"github.com/shish-dev/gqlgen/graphql"
+	"github.com/shish-dev/gqlgen/graphql/executor"
+	"github.com/shish-dev/gqlgen/graphql/handler/extension"
+	"github.com/shish-dev/gqlgen/graphql/handler/lru"
+	"github.com/shish-dev/gqlgen/graphql/handler/transport"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 

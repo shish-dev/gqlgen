@@ -15,9 +15,9 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/99designs/gqlgen/internal/code"
+	"github.com/shish-dev/gqlgen/internal/code"
 
-	"github.com/99designs/gqlgen/internal/imports"
+	"github.com/shish-dev/gqlgen/internal/imports"
 )
 
 // CurrentImports keeps track of all the import declarations that are needed during the execution of a plugin.

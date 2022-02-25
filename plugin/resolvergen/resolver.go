@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/99designs/gqlgen/codegen"
-	"github.com/99designs/gqlgen/codegen/config"
-	"github.com/99designs/gqlgen/codegen/templates"
-	"github.com/99designs/gqlgen/internal/rewrite"
-	"github.com/99designs/gqlgen/plugin"
+	"github.com/shish-dev/gqlgen/codegen"
+	"github.com/shish-dev/gqlgen/codegen/config"
+	"github.com/shish-dev/gqlgen/codegen/templates"
+	"github.com/shish-dev/gqlgen/internal/rewrite"
+	"github.com/shish-dev/gqlgen/plugin"
 )
 
 func New() plugin.Plugin {
